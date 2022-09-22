@@ -1,71 +1,46 @@
 package com.poli.caja.Entidades;
 
-import javax.persistence.Entity;
+import lombok.*;
+
+
 import java.util.Date;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
-
+@Entity
+@Table(name = "Employees")
+@Data
+@NoArgsConstructor @Builder
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @NotEmpty(message = "Es necesario el correo para registrar el empleado.")
+    @Column(length = 40, unique = true, nullable = false)
     private String email;
+
+    @Column(name = "id_profile", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Profile profile;
+
+    @NotEmpty(message = "El Rol solo puede ser Admin u Operario")
+    @Column(name = "role")
     private Enum_RoleName role;
-    private Date dateupdateAt;
+
+    @Column(name = "date_update_at")
+    private Date dateUpdateAt;
+
+    @Column(name = "created_at")
     private Date createdAt;
 
-    public Employee(long id, String email, Profile profile, Enum_RoleName role, Date dateupdateAt, Date createdAt) {
+    public Employee(long id, String email, Profile profile, Enum_RoleName role, Date dateUpdateAt, Date createdAt) {
         this.id = id;
         this.email = email;
         this.profile = profile;
         this.role = role;
-        this.dateupdateAt = dateupdateAt;
+        this.dateUpdateAt = dateUpdateAt;
         this.createdAt = createdAt;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
-
-    public Enum_RoleName getRole() {
-        return role;
-    }
-
-    public void setRole(Enum_RoleName role) {
-        this.role = role;
-    }
-
-    public Date getDateupdateAt() {
-        return dateupdateAt;
-    }
-
-    public void setDateupdateAt(Date dateupdateAt) {
-        this.dateupdateAt = dateupdateAt;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
 }

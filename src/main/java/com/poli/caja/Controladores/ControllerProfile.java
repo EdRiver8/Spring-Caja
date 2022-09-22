@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/profile")
-public class controllerProfile {
+public class ControllerProfile {
 
-    @GetMapping("/listar")
+    @GetMapping("/list")
     public String listProfile(){
         return "Perfiles: Jefe, Operario, Adtivo...";
     }
@@ -19,5 +19,14 @@ public class controllerProfile {
     @PutMapping("/update")
     public String updateProfile(){
         return "Datos Actualizados!";
+    }
+
+    @DeleteMapping("/delete")
+    public boolean deleteProfile(boolean eliminar){
+        if(eliminar == true){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
