@@ -23,8 +23,11 @@ public class Profile {
     @Column(name = "update_at")
     private LocalDate updateAt;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private List<Employee> employee;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_employee")
+    private Employee employee;
+
+//    @OneToMany(mappedBy = "profile", fetch = FetchType.LAZY)
+//    private List<Employee> employee;
 
 }

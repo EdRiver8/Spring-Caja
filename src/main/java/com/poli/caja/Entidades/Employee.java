@@ -2,7 +2,6 @@ package com.poli.caja.Entidades;
 
 import lombok.*;
 
-
 import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -20,8 +19,8 @@ public class Employee {
     @Column(length = 40, unique = true, nullable = false)
     private String email;
 
-    @Column(name = "id_profile", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_profile") //quien recibe el muchos, tiene una columna de union o FK
     private Profile profile;
 
     @NotEmpty(message = "El Rol solo puede ser Admin u Operario")
