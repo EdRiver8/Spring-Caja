@@ -1,12 +1,10 @@
 package com.poli.caja.Servicios;
 
 import com.poli.caja.Entidades.Employee;
-import com.poli.caja.Entidades.Profile;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class ServiciosEmployee {
+public class EmployeeServiceImp {
 
     ArrayList<Employee> listaEmpleado = this.listEmployee();
 

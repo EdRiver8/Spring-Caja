@@ -16,8 +16,8 @@ import java.util.List;
 @Table(name = "enterprises")
 public class Enterprise {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String document;
     private String phone;

@@ -12,10 +12,10 @@ public class ControllerEmployee {
 
     Profile perfil;
 
-    ServiciosEmployee serviciosEmployee;
+    EmployeeServiceImp employeeServiceImp;
 
     public ControllerEmployee(){
-        this.serviciosEmployee = new ServiciosEmployee();
+        this.employeeServiceImp = new EmployeeServiceImp();
     }
 
     @GetMapping("/list")
@@ -30,12 +30,12 @@ public class ControllerEmployee {
 
     @GetMapping("/list/{id}")
     public Employee listEmployee(@PathVariable int id){
-        return serviciosEmployee.findEmployee(id);
+        return employeeServiceImp.findEmployee(id);
     }
 
     @PostMapping("/save")
     public ArrayList<Employee> saveEmployee(@RequestBody Employee employee){
-        return serviciosEmployee.saveEmployee(employee);
+        return employeeServiceImp.saveEmployee(employee);
     }
 
     @PutMapping("/update")

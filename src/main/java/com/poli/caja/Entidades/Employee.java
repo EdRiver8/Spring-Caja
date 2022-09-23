@@ -5,7 +5,7 @@ import lombok.*;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "employees")
@@ -13,14 +13,14 @@ import javax.validation.constraints.NotEmpty;
 @Builder
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @NotEmpty(message = "Es necesario el correo para registrar el empleado.")
+    @NotNull(message = "Es necesario el correo para registrar el empleado.")
     @Column(length = 40, unique = true, nullable = false)
     private String email;
 
-    @NotEmpty(message = "El Rol solo puede ser Admin u Operario")
+    @NotNull(message = "El Rol solo puede ser Admin u Operario")
     @Column(name = "role")
     private Enum_RoleName role;
 

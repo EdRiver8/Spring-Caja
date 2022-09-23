@@ -3,6 +3,7 @@ package com.poli.caja.Entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -12,9 +13,12 @@ import java.time.LocalDate;
 @Table(name = "profiles")
 public class Profile {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String image;
+
+    @NotNull(message = "Ingrese el numero de celular")
     private String phone;
 
     @Column(name = "created_at")
@@ -25,7 +29,7 @@ public class Profile {
 
     // tiene el join, asi sea uno a uno, porque el padre seria la clase 'Employee'
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id", nullable = false)
+    @JoinColumn(name = "employee_id", nullable = true, updatable = true)
     private Employee employee;
 
 //    @OneToMany(mappedBy = "profile", fetch = FetchType.LAZY)
