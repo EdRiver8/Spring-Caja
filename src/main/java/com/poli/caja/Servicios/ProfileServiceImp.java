@@ -30,7 +30,7 @@ public class ProfileServiceImp implements ProfileService{
     @Override
     public Profile updateProfile(Profile profile, Long id) {
         if(findProfileById(id) != null){
-            return profileRepository.save(profile);// el save sirve para actualizar
+            return profileRepository.save(profile);// el 'save' sirve para actualizar
         }
         return null;
     }
