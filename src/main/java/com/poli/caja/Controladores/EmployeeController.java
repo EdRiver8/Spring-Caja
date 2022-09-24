@@ -8,13 +8,13 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/employee")
-public class ControllerEmployee {
+public class EmployeeController {
 
     Profile perfil;
 
     EmployeeServiceImp employeeServiceImp;
 
-    public ControllerEmployee(){
+    public EmployeeController(){
         this.employeeServiceImp = new EmployeeServiceImp();
     }
 

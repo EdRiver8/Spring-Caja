@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 //@Getter @Setter
@@ -22,10 +22,10 @@ public class Profile {
     private String phone;
 
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    private Date createdAt;
 
     @Column(name = "update_at")
-    private LocalDate updateAt;
+    private Date updateAt;
 
     // tiene el join, asi sea uno a uno, porque el padre seria la clase 'Employee'
     @OneToOne(fetch = FetchType.LAZY)
